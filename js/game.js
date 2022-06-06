@@ -7,10 +7,17 @@
 // Created on: June 2022
 // This is the Phaser3 configuration file
 
+// import the splash scene from the splash scene file
 import SplashScene from './splashScene.js'
+
+//import the title scene from the title scene file
+import TitleScene from './titleScene.js'
 
 //Splash scene
 const splashScene = new SplashScene()
+
+//Title scene
+const titleScene = new TitleScene()
 
 // this constant creates a dictionary, a set of basic parameters for the game: it is the game scene.
 const config = {
@@ -27,7 +34,7 @@ const config = {
     }
   },
   // this sets the background color of the game
-  backgroundColor: 0x5f6e7a,
+  backgroundColor: 0xffffff,
   scale: {
     // this ensures the game scene will always fit the full screen.
     mode: Phaser.Scale.FIT,
@@ -41,3 +48,7 @@ const game = new Phaser.Game(config)
 //load scenes
 //please note that any "key" is global and cannot be reused. it must be totally unique from any other reference or variable inside of your code. 
 game.scene.add('splashScene', splashScene)
+game.scene.add('titleScene', titleScene)
+
+// start scene
+game.scene.start('splashScene')

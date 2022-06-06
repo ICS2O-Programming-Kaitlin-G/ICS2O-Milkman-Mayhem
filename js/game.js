@@ -11,5 +11,4 @@ const config = {
   backgroundColor: 0x5f6e7a
 }
 
-/* 
 const game = new Phaser.Game(config)

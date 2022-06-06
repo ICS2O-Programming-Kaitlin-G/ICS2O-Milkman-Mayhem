@@ -7,6 +7,11 @@
 // Created on: June 2022
 // This is the Phaser3 configuration file
 
+import SplashScene from './splashScene.js'
+
+//Splash scene
+const splashScene = new SplashScene()
+
 // this constant creates a dictionary, a set of basic parameters for the game: it is the game scene.
 const config = {
   // this declares the type of the game as a phaser game, and defines the method of which this game will use it to the auto method of Phaser
@@ -31,4 +36,8 @@ const config = {
   }
 }
 
-const game = new Phaser.Game(config) 
+const game = new Phaser.Game(config)
+
+//load scenes
+//please note that any "key" is global and cannot be reused. it must be totally unique from any other reference or variable inside of your code. 
+game.scene.add('splashScene', splashScene)

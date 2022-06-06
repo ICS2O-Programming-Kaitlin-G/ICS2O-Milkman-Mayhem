@@ -22,7 +22,7 @@ class TitleScene extends Phaser.Scene {
   preload () {
     // this displays to the console what scene the program is currently running (typically for debugging purposes)
     console.log('Title Scene')
-  }
+   }
 
   create (data) {
   }

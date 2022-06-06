@@ -13,11 +13,17 @@ import SplashScene from './splashScene.js'
 //import the title scene from the title scene file
 import TitleScene from './titleScene.js'
 
+//import the menu scene from the title scene file
+import MenuScene from './menuScene.js'
+
 //Splash scene
 const splashScene = new SplashScene()
 
 //Title scene
 const titleScene = new TitleScene()
+
+//Menu scene
+const menuScene = new MenuScene()
 
 // this constant creates a dictionary, a set of basic parameters for the game: it is the game scene.
 const config = {
@@ -49,6 +55,7 @@ const game = new Phaser.Game(config)
 //please note that any "key" is global and cannot be reused. it must be totally unique from any other reference or variable inside of your code. 
 game.scene.add('splashScene', splashScene)
 game.scene.add('titleScene', titleScene)
+game.scene.add('menuScene', menuScene)
 
 // start scene
 game.scene.start('splashScene')

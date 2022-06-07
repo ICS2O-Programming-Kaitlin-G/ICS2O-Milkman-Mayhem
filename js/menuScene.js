@@ -1,4 +1,4 @@
-/* global Phaser */
+/* glo bal Phaser */
 
 // Copyright (c) 2020 Mr. Coxall All rights reserved
 //

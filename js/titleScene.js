@@ -41,6 +41,11 @@ class TitleScene extends Phaser.Scene {
   }
 
   update (time, delta) {
+        //this if statement switches to the next scene by checking the time that has elapsed from the program start 
+    if (time > 10000) {
+      //this switches the scene from the title scene to the menu scene
+      this.scene.switch('menuScene')
+    }
   }
 }
 

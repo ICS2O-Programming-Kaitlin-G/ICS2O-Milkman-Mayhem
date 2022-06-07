@@ -5,13 +5,13 @@
 // Created by: Mr. Coxall
 // Modified by: Katie
 // Created on: June 2022
-// This file contains the menu scene
+// This file contains the game scene
 
 // this establishes the splash scene through the use of the class function
-class MenuScene extends Phaser.Scene {
+class GameScene extends Phaser.Scene {
   constructor () {
     //this runs the phaser scene code first.
-    super({ key: 'menuScene' })
+    super({ key: 'gameScene' })
   }
   //this initializes the scene, in other words gets it ready to go.
   init (data) {
@@ -21,7 +21,7 @@ class MenuScene extends Phaser.Scene {
   
   preload () {
     // this displays to the console what scene the program is currently running (typically for debugging purposes)
-    console.log('Menu Scene')
+    console.log('Game Scene')
   }
 
   create (data) {
@@ -31,4 +31,4 @@ class MenuScene extends Phaser.Scene {
   }
 }
 
-export default MenuScene
+export default GameScene

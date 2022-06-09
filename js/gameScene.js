@@ -29,9 +29,9 @@ class GameScene extends Phaser.Scene {
   }
 
   create (data) {
-    //this places the background image in the scene.
-    this.background = this.add.image(0, 0, 'milkmanBackground')
-    //this places the background image to the coordinates of 0,0. 
+    //this places the background image in the scene and sets it to 0, 0.
+    this.background = this.add.image(0, 0, 'milkmanBackground').setScale(3.0)
+    //this sets the origin of the background image to the top left hand side of the screen. 
     this.background.setOrigin(0, 0)
   }
 

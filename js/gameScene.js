@@ -12,6 +12,8 @@ class GameScene extends Phaser.Scene {
   constructor () {
     //this runs the phaser scene code first.
     super({ key: 'gameScene' })
+    //this initializes the game scene background image
+    this.background = null
   }
   //this initializes the scene, in other words gets it ready to go.
   init (data) {
@@ -21,10 +23,16 @@ class GameScene extends Phaser.Scene {
   
   preload () {
     // this displays to the console what scene the program is currently running (typically for debugging purposes)
-    console.log('Game Scene')
+    console.log('Game Scene') 
+    // this loads the image for the background image
+    this.load.image('milkmanBackground', 'assets/milkmanBackground.jpg')
   }
 
   create (data) {
+    //this places the background image in the scene.
+    this.background = this.add.image(0, 0, 'milkmanBackground')
+    //this places the background image to the coordinates of 0,0. 
+    this.background.setOrigin(0, 0)
   }
 
   update (time, delta) {

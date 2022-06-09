@@ -14,6 +14,8 @@ class GameScene extends Phaser.Scene {
     super({ key: 'gameScene' })
     //this initializes the game scene background image
     this.background = null
+    //this initializes the variable that will hold the milkman.
+    this.milkman = null
   }
   //this initializes the scene, in other words gets it ready to go.
   init (data) {
@@ -26,6 +28,8 @@ class GameScene extends Phaser.Scene {
     console.log('Game Scene') 
     // this loads the image for the background image
     this.load.image('milkmanBackground', 'assets/milkmanBackground.jpg')
+    //this loads the milkman sprite
+    this.load.image('milkman', 'assets/milkman.png')
   }
 
   create (data) {
@@ -33,6 +37,8 @@ class GameScene extends Phaser.Scene {
     this.background = this.add.image(0, 0, 'milkmanBackground').setScale(3.0)
     //this sets the origin of the background image to the top left hand side of the screen. 
     this.background.setOrigin(0, 0)
+    //this places the sprite on the screen and adds physics to the sprite
+    this.milkman = this.physics.add.sprite(1920 / 2, 1080 - 100, 'milkman')
   }
 
   update (time, delta) {

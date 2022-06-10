@@ -16,6 +16,8 @@ class GameScene extends Phaser.Scene {
     this.background = null
     //this initializes the variable that will hold the milkman.
     this.milkman = null
+    //this initializes the variable that will make sure that the user can only fire one projectile per press of the spacebar, so as not to make the game too easy. 
+    this.fireProjectile = false
   }
   //this initializes the scene, in other words gets it ready to go.
   init (data) {
@@ -30,6 +32,8 @@ class GameScene extends Phaser.Scene {
     this.load.image('milkmanBackground', 'assets/milkmanBackground.jpg')
     //this loads the milkman sprite
     this.load.image('milkman', 'assets/milkman.png')
+    //this loads the milk bottle projectile sprite
+    this.load.image('milkJug', 'assets/milk_jug.png')
   }
 
   create (data) {
@@ -39,6 +43,8 @@ class GameScene extends Phaser.Scene {
     this.background.setOrigin(0, 0)
     //this places the sprite on the screen and adds physics to the sprite
     this.milkman = this.physics.add.sprite(1920 / 2, 1080 - 100, 'milkman').setScale(0.2)
+    //this creates a group for the milk jug projectiles
+    this.projectileGroup = this.physics.add.group()
   }
   //this update code will attempt to run approximately 60 times a second (predetermined by phaser)
   update (time, delta) {
@@ -46,6 +52,8 @@ class GameScene extends Phaser.Scene {
     const keyLeftObj = this.input.keyboard.addKey('LEFT')
     //this initializes a variable to contain the data when the right key is pressed. 
     const keyRightObj = this.input.keyboard.addKey('RIGHT')
+    //this initializes a variable to contain the data when the space bar, which fires the projectiles, is pressed.
+    const keySpaceObj = this.input.keyboard.addKey('SPACE')
     //this checks if the key has been pressed and moves the spaceship to the left if so. 
     if (keyLeftObj.isDown === true) {
       this.milkman.x = this.milkman.x - 10
@@ -61,6 +69,23 @@ class GameScene extends Phaser.Scene {
       if (this.milkman.x > 1920) {
         this.milkman.x = 1920
       }
+    }
+    //this checks if the space bar has been pressed; if so, it creates one instance of the group variable created above, so only one appears, essentially just firing the projectile.
+    if (keySpaceObj.isDown === true) {
+      //this checks to see if the fire projectile variable that only allows the user to fire one projectile per press of the spacebar is either true or false.
+      if (this.fireProjectile === false) {
+        //tis sets the variable to true
+        this.fireProjectile = true
+       //this makes a new instance of the projectile and sets it to the milkman's location at the time of firing. the sprite has the physics property.
+      const aNewProjectile = this.physics.add.sprite(this.milkman.x, this.milkman.y, 'milkJug').setScale(0.13)
+      //this adds the new instance of the projectile just created above to the group.
+      this.projectileGroup.add(aNewProjectile) 
+      }
+    }
+    //this checks if the space key is not being pressed. 
+    if (keySpaceObj.isUp === true) {
+      //this sets the fire projectile variable back to false so that it can be fired again whenever the user presses and releases the space bar, so it is not just a single instance allowed.
+      this.fireProjectile = false
     }
   }
 }

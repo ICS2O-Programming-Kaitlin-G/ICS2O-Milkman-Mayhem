@@ -23,7 +23,7 @@ class SplashScene extends Phaser.Scene {
     // this displays to the console what scene the program is currently running (typically for debugging purposes)
     console.log('Splash Scene')
     // loading in the file for the splash scene
-    this.load.image('splashSceneBackground','./assets/splashSceneImage.png')
+    this.load.image('splashSceneBackground','./images/splashSceneImage.png')
   }
  
   create (data) {

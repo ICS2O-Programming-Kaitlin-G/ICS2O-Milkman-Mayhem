@@ -27,7 +27,7 @@ class TitleScene extends Phaser.Scene {
   preload () {
     // this displays to the console what scene the program is currently running (typically for debugging purposes)
     console.log('Title Scene')
-    this.load.image('titleSceneBackground', './assets/milkmanMayhemImage.jpg')
+    this.load.image('titleSceneBackground', './images/milkmanMayhemImage.jpg')
    }
 
   create (data) {

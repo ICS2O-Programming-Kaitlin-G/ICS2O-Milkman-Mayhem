@@ -28,9 +28,9 @@ class MenuScene extends Phaser.Scene {
     // this displays to the console what scene the program is currently running (typically for debugging purposes)
     console.log('Menu Scene')
     //this loads the menu scene background image
-    this.load.image('menuSceneBackground', 'assets/menu_background.png')
+    this.load.image('menuSceneBackground', 'images/menu_background.png')
     //this loads the button image
-    this.load.image('startButton', 'assets/milk_button.png')
+    this.load.image('startButton', 'images/milk_button.png')
   }
 
   create (data) {

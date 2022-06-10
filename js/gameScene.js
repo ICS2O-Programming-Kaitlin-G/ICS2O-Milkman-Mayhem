@@ -29,11 +29,11 @@ class GameScene extends Phaser.Scene {
     // this displays to the console what scene the program is currently running (typically for debugging purposes)
     console.log('Game Scene') 
     // this loads the image for the background image
-    this.load.image('milkmanBackground', 'assets/milkmanBackground.jpg')
+    this.load.image('milkmanBackground', 'images/milkmanBackground.jpg')
     //this loads the milkman sprite
-    this.load.image('milkman', 'assets/milkman.png')
+    this.load.image('milkman', 'images/milkman.png')
     //this loads the milk bottle projectile sprite
-    this.load.image('milkJug', 'assets/milk_jug.png')
+    this.load.image('milkJug', 'images/milk_jug.png')
   }
 
   create (data) {

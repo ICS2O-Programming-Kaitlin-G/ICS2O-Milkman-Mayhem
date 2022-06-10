@@ -38,7 +38,7 @@ class GameScene extends Phaser.Scene {
     //this sets the origin of the background image to the top left hand side of the screen. 
     this.background.setOrigin(0, 0)
     //this places the sprite on the screen and adds physics to the sprite
-    this.milkman = this.physics.add.sprite(1920 / 2, 1080 - 100, 'milkman')
+    this.milkman = this.physics.add.sprite(1920 / 2, 1080 - 100, 'milkman').setScale(0.2)
   }
 
   update (time, delta) {

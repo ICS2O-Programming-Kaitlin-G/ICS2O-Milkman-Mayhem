@@ -34,6 +34,8 @@ class GameScene extends Phaser.Scene {
     this.load.image('milkman', 'images/milkman.png')
     //this loads the milk bottle projectile sprite
     this.load.image('milkJug', 'images/milk_jug.png')
+    //this loads the audio file for the milk jug projectile being thrown/"fired"
+    this.load.audio('wooshJug', 'sounds/jug-thrown.wav')
   }
 
   create (data) {
@@ -77,9 +79,11 @@ class GameScene extends Phaser.Scene {
         //tis sets the variable to true
         this.fireProjectile = true
        //this makes a new instance of the projectile and sets it to the milkman's location at the time of firing. the sprite has the physics property.
-      const aNewProjectile = this.physics.add.sprite(this.milkman.x, this.milkman.y, 'milkJug').setScale(0.13)
-      //this adds the new instance of the projectile just created above to the group.
-      this.projectileGroup.add(aNewProjectile) 
+        const aNewProjectile = this.physics.add.sprite(this.milkman.x, this.milkman.y, 'milkJug').setScale(0.13)
+        //this adds the new instance of the projectile just created above to the group.
+        this.projectileGroup.add(aNewProjectile) 
+        //this plays the sound of the jug being thrown when the projectile appears
+        this.sound.play('wooshJug')
       }
     }
     //this checks if the space key is not being pressed. 
@@ -87,6 +91,15 @@ class GameScene extends Phaser.Scene {
       //this sets the fire projectile variable back to false so that it can be fired again whenever the user presses and releases the space bar, so it is not just a single instance allowed.
       this.fireProjectile = false
     }
+    //this picks out each individual child element (i.e one single projectile) out of the projectile group 
+    this.projectileGroup.children.each(function (item) {
+      //this decreases the y value of the item (which is each individual projectile). This moves the projectile towards the top of the screen, as the origin (0,0), is at the top of the screen.
+      item.y = item.y - 10
+      //this checks to see if the projectile's y location is beyond the screen and if so, it destroys the projectole so it does not take up any more memory than strictly necessary. 
+      if (item.y < 0) {
+        item.destroy()
+      }
+    })
   }
 }
 

@@ -9,6 +9,23 @@
 
 // this establishes the splash scene through the use of the class function
 class GameScene extends Phaser.Scene {
+
+  //create an enemy reaching for the milk 
+  createEnemy() {
+    //this generates a random number from 1 to 1920 to determine at which x coordinate the enemy will spawn.
+    const enemyXLocation = Math.floor(Math.random() * 1920) + 1;
+    //this generates a random number from 1 to 50 for the x velocity of the enemy who is reaching for milk from the milkman
+    let enemyXVelocity = Math.round(Math.random() * 50) + 1;
+    //this will make the number negative in 50% of outcomes.
+    enemyXVelocity *= Math.round(Math.random()) ? 1 : -1;
+    //this creates a single enemy who is reaching for the milk, with the use of physics.
+    const oneEnemy = this.physics.add.sprite(enemyXLocation, -100, 'enemy').setScale(0.5)
+    //this adds velocity to the enemy who is reaching out for the milk. The value of the velocity is 200.
+    oneEnemy.body.velocity.y = 200
+    oneEnemy.body.velocity.x = enemyXVelocity
+    this.enemyGroup.add(oneEnemy)
+  }
+  
   constructor () {
     //this runs the phaser scene code first.
     super({ key: 'gameScene' })
@@ -34,6 +51,8 @@ class GameScene extends Phaser.Scene {
     this.load.image('milkman', 'images/milkman.png')
     //this loads the milk bottle projectile sprite
     this.load.image('milkJug', 'images/milk_jug.png')
+    //this will load in the sprite of the people reaching out for the milk, which serves as the enemy.
+    this.load.image('enemy', 'images/person_milk_reaching.png')
     //this loads the audio file for the milk jug projectile being thrown/"fired"
     this.load.audio('wooshJug', 'sounds/jug-thrown.wav')
   }
@@ -47,6 +66,10 @@ class GameScene extends Phaser.Scene {
     this.milkman = this.physics.add.sprite(1920 / 2, 1080 - 100, 'milkman').setScale(0.2)
     //this creates a group for the milk jug projectiles
     this.projectileGroup = this.physics.add.group()
+    //this creates a group for the enemy people who are trying to get the milk from the milkman.
+    this.enemyGroup = this.add.group()
+    //this creates an enemy
+    this.createEnemy()
   }
   //this update code will attempt to run approximately 60 times a second (predetermined by phaser)
   update (time, delta) {

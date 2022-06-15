@@ -156,26 +156,33 @@ class GameScene extends Phaser.Scene {
   }
   //this update code will attempt to run approximately 60 times a second (predetermined by phaser)
   update (time, delta) {
+    
     //this initializes a variable to contain the data when the left key is pressed.
     const keyLeftObj = this.input.keyboard.addKey('LEFT')
+    
     //this initializes a variable to contain the data when the right key is pressed. 
     const keyRightObj = this.input.keyboard.addKey('RIGHT')
+    
     //this initializes a variable to contain the data when the space bar, which fires the projectiles, is pressed.
     const keySpaceObj = this.input.keyboard.addKey('SPACE')
+    
     //this checks if the key has been pressed and moves the spaceship to the left if so. 
     if (keyLeftObj.isDown === true) {
       this.milkman.x = this.milkman.x - 10
+      
       //this checks if the sprite is too far left, resulting in the sprite being off the screen, and if so, brings it back to the edge of the screen.
       if (this.milkman.x < 0) {
-      this.milkman.x = 0
+      this.milkman.x = 1920
       }
     }
+    
     //this checks if the right key has been pressed and moves the spaceship to the right if so. 
     if (keyRightObj.isDown === true) {
       this.milkman.x = this.milkman.x + 10
+      
       //this checks if the sprite is too far right, resulting in the sprite being off the screen, and if so, brings it back to the edge of the screen
       if (this.milkman.x > 1920) {
-        this.milkman.x = 1920
+        this.milkman.x = 0
       }
     }
     //this checks if the space bar has been pressed; if so, it creates one instance of the group variable created above, so only one appears, essentially just firing the projectile.

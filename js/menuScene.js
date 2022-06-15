@@ -15,7 +15,7 @@ class MenuScene extends Phaser.Scene {
 
     //this initializes the menuSceneBackgroundImage variable
     this.menuSceneBackgroundImage = null
-    //this initializes the variable that holds the button
+    //this initializes the variable that holds the start button
     this.startButton = null
   }
   //this initializes the scene, in other words gets it ready to go.
@@ -29,8 +29,10 @@ class MenuScene extends Phaser.Scene {
     console.log('Menu Scene')
     //this loads the menu scene background image
     this.load.image('menuSceneBackground', 'images/menu_background.png')
-    //this loads the button image
+    //this loads the start button image
     this.load.image('startButton', 'images/milk_button.png')
+    //this loads the instruction button image
+    this.load.image('instructionsButton', 'images/instructions_button.png')
   }
 
   create (data) {

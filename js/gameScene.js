@@ -61,7 +61,7 @@ class GameScene extends Phaser.Scene {
     this.gameOverText = null
 
     //this initializes the variable that contains the style for the game over text.
-    this.gameOverTextStyle = { font: '65px Arial', fill: '#33658A', align: 'center'}
+    this.gameOverTextStyle = { font: '65px Arial', fill: '#FFFFFF', align: 'center'}
   }
   
   preload () {
@@ -142,7 +142,10 @@ class GameScene extends Phaser.Scene {
       enemyCollide.destroy
       
       //this displays the game over text and sets it to the middle of the screen with the style defined earlier.
-      this.gameOverText = this.add.text(1920 / 2, 1080 / 2, 'Oh No! The milkman has been Touched. You did not win. The game is now over.\nClick these very cool words to try again.', this.gameOverTextStyle).setOrigin(0.5)
+      this.gameOverText = this.add.text(1920 / 2, 1080 / 2, 'Oh No! The milkman has been Touched. You did not win. \nThe game is now over.\nClick these very cool words to try again.', this.gameOverTextStyle).setOrigin(0.5)
+
+      //this sets the score to 0.
+      this.score = 0
       
       //this makes the word text interactive, which means the user can press the text like a button.
       this.gameOverText.setInteractive({ useHandCursor: true })

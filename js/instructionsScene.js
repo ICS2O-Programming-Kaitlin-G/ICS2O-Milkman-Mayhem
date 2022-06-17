@@ -35,14 +35,14 @@ class InstructionsScene extends Phaser.Scene {
 
   create (data) {
     //this places the background image on the screen and sets the scale. 
-    this.instructionsSceneBackgroundImage = this.add.sprite(0, 0, 'instructionsSceneBackground').setScale(1.5)
+    this.instructionsSceneBackgroundImage = this.add.sprite(0, 0, 'instructionsSceneBackground').setScale(4)
     //this places the back button on the screen and sets the scale.
     this.backButton
     //this places the background image at the center of the screen.
     this.instructionsSceneBackgroundImage.x = 1920 / 2
     this.instructionsSceneBackgroundImage.y = 1080 / 2
     //this places the return button in the scene at the top left of the screen
-    this.backButton = this.add.sprite(50, 50, 'backButton').setScale(0.2)
+    this.backButton = this.add.sprite(100, 100, 'backButton').setScale(0.2)
     //this adds the interactive property to the button, which allows us to click on it and use it like an actual button and not just an image.
     this.backButton.setInteractive({ useHandCursor: true })
     //this traps the event of the button being clicked and tells the program to run the function.

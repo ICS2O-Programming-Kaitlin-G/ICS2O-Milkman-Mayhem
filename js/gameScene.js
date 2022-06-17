@@ -89,6 +89,9 @@ class GameScene extends Phaser.Scene {
     //this loads the audio file for the milk jug projectile being thrown/"fired"
     this.load.audio('wooshJug', 'sounds/jug-thrown.wav')
 
+    //this loads the image for the background 
+    this.load.image('dead', 'images/game-over.jpg')
+
     //this loads the audio file for the enemy being hit and destroyed by the milk jug
     this.load.audio('intenseBeeping', 'sounds/intense_beeping.wav')
     //this loads the audio file for the shriek of the milkman when he collides with the enemy
@@ -119,9 +122,16 @@ class GameScene extends Phaser.Scene {
     
     //this senses collision between the person looking for milk and the milk jug
     this.physics.add.collider(this.projectileGroup, this.enemyGroup, function (projectileCollide, enemyCollide) {
+      //this makes a variable to establish the death
+      var enemyDeath = this.physics.add.sprite(enemyCollide.x, enemyCollide.y)
       //this destroys the enemy and the projectile which have collided.
       enemyCollide.destroy()
       projectileCollide.destroy()
+
+      //this sets the timeout of the function so the scene does not switch
+      setTimeout(function(){
+        enemyDeath.destroy()
+      }, 500);
 
       //this will play an intense beeping noise when the enemy is hit and destroyed with the milk
       this.sound.play('intenseBeeping')
@@ -129,6 +139,14 @@ class GameScene extends Phaser.Scene {
       //this will add one point to the score
       this.score = this.score + 1
       this.scoreText.setText('Score: ' + this.score.toString())
+
+      //this will let the user win
+      if (this.score === 50) {
+        this.background = this.add.image(1920 / 2, 1080 / 2, 'dead')
+        this.youWinText = this.add.text(1920 / 2, 1080 / 2, 'Great job!\n You have successfully completed your job as The Milkman. Congratulations!', this.youWinTextStyle).setOrigin(0.5)
+        
+        
+      }
 
      //this will recreate / respawn two enemies for every one enemy which had been destroyed
       this.createEnemy()
@@ -142,10 +160,12 @@ class GameScene extends Phaser.Scene {
       
       //this stops the physics of the game, so the enemies stop appearing
       this.physics.pause()
+      //this changes the screen
+      this.background = this.add.image(0, 0, 'dead').setScale(5)
       
       //this destroys the milkman and the enemy
-      milkmanCollide.destroy
-      enemyCollide.destroy
+      milkmanCollide.destroy()
+      enemyCollide.destroy()
       
       //this displays the game over text and sets it to the middle of the screen with the style defined earlier.
       this.gameOverText = this.add.text(1920 / 2, 1080 / 2, 'Oh No! The milkman has been Touched. You did not win. \nThe game is now over.\nClick these very cool words to try again.', this.gameOverTextStyle).setOrigin(0.5)

@@ -47,7 +47,7 @@ class InstructionsScene extends Phaser.Scene {
     //this places the return button in the scene at the top left of the screen
     this.backButton = this.add.sprite(200, 200, 'backButton').setScale(0.2)
     //this places the text on the scene
-    this.instructionsText = this.add.text(1920 / 2, 1080 / 2, 'In this game, you play as a milkman\n who is very afraid of people.\n Deliver milk to the people without touching them.\n If you touch them, the milkman will evaporate.\n Move with the arrow keys and press the spacebar\n to throw milk bottles at people.', this.instructionsTextStyle).setOrigin(0.5)
+    this.instructionsText = this.add.text(1920 / 2, 1080 / 2, 'In this game, you play as a milkman\n who is very afraid of people.\n Deliver milk to the people without touching them.\n If you touch them, the milkman will evaporate.\n Move with the arrow keys and press the spacebar\n to throw milk bottles at people.\n You need 50 points to win.', this.instructionsTextStyle).setOrigin(0.5)
     //this adds the interactive property to the button, which allows us to click on it and use it like an actual button and not just an image.
     this.backButton.setInteractive({ useHandCursor: true })
     //this traps the event of the button being clicked and tells the program to run the function.

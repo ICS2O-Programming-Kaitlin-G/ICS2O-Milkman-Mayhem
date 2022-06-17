@@ -130,7 +130,7 @@ class GameScene extends Phaser.Scene {
 
       //this sets the timeout of the function so the scene does not switch
       setTimeout(function(){
-        enemyDeath.destroy()
+      enemyDeath.destroy()
       }, 500);
 
       //this will play an intense beeping noise when the enemy is hit and destroyed with the milk
@@ -142,10 +142,9 @@ class GameScene extends Phaser.Scene {
 
       //this will let the user win
       if (this.score === 50) {
+        this.physics.pause()
         this.background = this.add.image(1920 / 2, 1080 / 2, 'dead')
-        this.youWinText = this.add.text(1920 / 2, 1080 / 2, 'Great job!\n You have successfully completed your job as The Milkman. Congratulations!', this.youWinTextStyle).setOrigin(0.5)
-        
-        
+        this.youWinText = this.add.text(1920 / 2, 1080 / 2, 'Great job!\n You have successfully completed your job as The Milkman.\n Congratulations!', this.youWinTextStyle).setOrigin(0.5)
       }
 
      //this will recreate / respawn two enemies for every one enemy which had been destroyed

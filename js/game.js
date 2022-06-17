@@ -19,6 +19,9 @@ import MenuScene from './menuScene.js'
 //import the game scene from the title scene file
 import GameScene from './gameScene.js'
 
+//import the intructions scene from the title scene file
+import InstructionsScene from './instructionsScene.js'
+
 //Splash scene
 const splashScene = new SplashScene()
 
@@ -30,6 +33,9 @@ const menuScene = new MenuScene()
 
 //Game scene
 const gameScene = new GameScene()
+
+//Instructions scene
+const instructionsScene = new InstructionsScene()
 
 // this constant creates a dictionary, a set of basic parameters for the game: it is the game scene.
 const config = {
@@ -63,6 +69,7 @@ game.scene.add('splashScene', splashScene)
 game.scene.add('titleScene', titleScene)
 game.scene.add('menuScene', menuScene)
 game.scene.add('gameScene', gameScene)
+game.scene.add('instructionsScene', instructionsScene)
 
 // start scene
 game.scene.start('splashScene')

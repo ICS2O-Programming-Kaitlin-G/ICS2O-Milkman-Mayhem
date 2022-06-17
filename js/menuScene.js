@@ -17,6 +17,8 @@ class MenuScene extends Phaser.Scene {
     this.menuSceneBackgroundImage = null
     //this initializes the variable that holds the start button
     this.startButton = null
+    //this initializes the variable that holds the instructions button
+    this.instructionsButton = null
   }
   //this initializes the scene, in other words gets it ready to go.
   init (data) {
@@ -43,17 +45,29 @@ class MenuScene extends Phaser.Scene {
     this.menuSceneBackgroundImage.y = 1080 / 2
     //this places the menu button in the scene at the center of the screen
     this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 100, 'startButton').setScale(0.45)
+    //this places the instructions button in the scene.
+    this.instructionsButton = this.add.sprite((1920 / 2) - 450, (1080 / 2) - 200, 'instructionsButton').setScale(0.2)
     //this adds the interactive property to the button, which allows us to click on it and use it like an actual button and not just an image.
     this.startButton.setInteractive({ useHandCursor: true })
+    //this adds the same interactive property to the instructions scene button
+    this.instructionsButton.setInteractive({ useHandCursor: true })
     //this traps the event of the button being clicked and tells the program to run the function.
     this.startButton.on('pointerdown', () => this.clickButton() )
+    //this traps the event of the instructions button being clicked and it informs the program that it is time to run the corresponding function
+    this.instructionsButton.on('pointerdown', () => this.instructionsClickButton() )
   }
 
   update (time, delta) {
   }
 
+  //this is the function that the start button runs when the button is clicked
   clickButton () {
     this.scene.start('gameScene')
+  }
+
+  //this is the function the instructions button executes.
+  instructionsClickButton () {
+    this.scene.start('instructionsScene')
   }
 }
 

@@ -62,6 +62,12 @@ class GameScene extends Phaser.Scene {
 
     //this initializes the variable that contains the style for the game over text.
     this.gameOverTextStyle = { font: '65px Arial', fill: '#FFFFFF', align: 'center'}
+
+    //this initializes the variable that holds the you win text
+    this.youWinText = null
+
+    //this initializes the variable that contains the style for the you win text.
+    this.youWinTextStyle = { font: '65px Arial', fill: '#FFFFFF', align: 'center'}
   }
   
   preload () {
@@ -154,6 +160,7 @@ class GameScene extends Phaser.Scene {
       this.gameOverText.on('pointerdown', () => this.scene.start('gameScene'))
     }.bind(this))
   }
+  
   //this update code will attempt to run approximately 60 times a second (predetermined by phaser)
   update (time, delta) {
     
@@ -185,29 +192,37 @@ class GameScene extends Phaser.Scene {
         this.milkman.x = 0
       }
     }
+    
     //this checks if the space bar has been pressed; if so, it creates one instance of the group variable created above, so only one appears, essentially just firing the projectile.
     if (keySpaceObj.isDown === true) {
       //this checks to see if the fire projectile variable that only allows the user to fire one projectile per press of the spacebar is either true or false.
       if (this.fireProjectile === false) {
+        
         //tis sets the variable to true
         this.fireProjectile = true
+        
        //this makes a new instance of the projectile and sets it to the milkman's location at the time of firing. the sprite has the physics property.
         const aNewProjectile = this.physics.add.sprite(this.milkman.x, this.milkman.y, 'milkJug').setScale(0.13)
+        
         //this adds the new instance of the projectile just created above to the group.
         this.projectileGroup.add(aNewProjectile) 
+        
         //this plays the sound of the jug being thrown when the projectile appears
         this.sound.play('wooshJug')
       }
     }
+    
     //this checks if the space key is not being pressed. 
     if (keySpaceObj.isUp === true) {
       //this sets the fire projectile variable back to false so that it can be fired again whenever the user presses and releases the space bar, so it is not just a single instance allowed.
       this.fireProjectile = false
     }
+    
     //this picks out each individual child element (i.e one single projectile) out of the projectile group 
     this.projectileGroup.children.each(function (item) {
       //this decreases the y value of the item (which is each individual projectile). This moves the projectile towards the top of the screen, as the origin (0,0), is at the top of the screen.
       item.y = item.y - 10
+      
       //this checks to see if the projectile's y location is beyond the screen and if so, it destroys the projectole so it does not take up any more memory than strictly necessary. 
       if (item.y < 0) {
         item.destroy()

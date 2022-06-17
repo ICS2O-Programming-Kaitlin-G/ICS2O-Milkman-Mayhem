@@ -219,12 +219,7 @@ class GameScene extends Phaser.Scene {
     }
 
     //this ensures that if you did not shoot in the first place, a new enemy will spawn.
-    this.projectileGroup.children.each(function (item) {
-      if (item.y > 1080) {
-        item.y = -5
-        item.x = Math.floor(Math.random() * 1920 + 1)
-      }
-    })
+
     
     //this picks out each individual child element (i.e one single projectile) out of the projectile group 
     this.projectileGroup.children.each(function (item) {
@@ -234,6 +229,13 @@ class GameScene extends Phaser.Scene {
       //this checks to see if the projectile's y location is beyond the screen and if so, it destroys the projectole so it does not take up any more memory than strictly necessary. 
       if (item.y < 0) {
         item.destroy()
+      }
+    })
+
+    this.enemyGroup.children.each(function (item) {
+      if (item.y > 1080) {
+        item.y = -10
+        item.x = Math.floor(Math.random() * 1920 + 1)
       }
     })
   }

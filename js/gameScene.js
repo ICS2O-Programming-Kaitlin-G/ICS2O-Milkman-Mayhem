@@ -217,6 +217,14 @@ class GameScene extends Phaser.Scene {
       //this sets the fire projectile variable back to false so that it can be fired again whenever the user presses and releases the space bar, so it is not just a single instance allowed.
       this.fireProjectile = false
     }
+
+    //this ensures that if you did not shoot in the first place, a new enemy will spawn.
+    this.projectileGroup.children.each(function (item) {
+      if (item.y > 1080) {
+        item.y = -5
+        item.x = Math.floor(Math.random() * 1920 + 1)
+      }
+    })
     
     //this picks out each individual child element (i.e one single projectile) out of the projectile group 
     this.projectileGroup.children.each(function (item) {

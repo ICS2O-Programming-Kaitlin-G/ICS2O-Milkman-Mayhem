@@ -144,7 +144,7 @@ class GameScene extends Phaser.Scene {
       if (this.score === 50) {
         this.physics.pause()
         this.background = this.add.image(1920 / 2, 1080 / 2, 'dead')
-        this.youWinText = this.add.text(1920 / 2, 1080 / 2, 'Great job!\n You have successfully completed your job as The Milkman.\n Congratulations!', this.youWinTextStyle).setOrigin(0.5)
+        this.youWinText = this.add.text(1920 / 2, 1080 / 2, 'Great job!\n You have successfully completed your job as The Milkman.\n Congratulations!\n Refresh the page to do it again.\n This will develop patience.', this.youWinTextStyle).setOrigin(0.5)
       }
 
      //this will recreate / respawn two enemies for every one enemy which had been destroyed
